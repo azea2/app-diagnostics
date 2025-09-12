@@ -23,7 +23,7 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
           {hijos.length > 0 && (
             <div className="relative mb-3">
               <div className="flex gap-4 justify-center relative">
-                {hijos.map((hijo, index) => (
+                {hijos.map((hijo) => (
                   <div key={hijo.id} className="relative">
                     <Nodo
                       textoInicial={hijo.texto}
@@ -94,7 +94,7 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
           {hijos.length > 0 && (
             <div className="relative mt-3">
               <div className="flex gap-4 justify-center relative">
-                {hijos.map((hijo, index) => (
+                {hijos.map((hijo) => (
                   <div key={hijo.id} className="relative">
                     <Nodo
                       textoInicial={hijo.texto}
