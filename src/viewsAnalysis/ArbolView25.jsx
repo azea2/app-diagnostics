@@ -19,25 +19,30 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
       {/* Efectos → arriba */}
       {tipo === "efecto" && (
         <>
+          {/* Sub-efectos renderizados arriba (igual que causas pero invertido) */}
           {hijos.length > 0 && (
-            <div className="flex gap-4 mb-2">
-              {hijos.map((hijo) => (
-                <Nodo
-                  key={hijo.id}
-                  textoInicial={hijo.texto}
-                  tipo={tipo}
-                  onEliminar={() =>
-                    setHijos(hijos.filter((h) => h.id !== hijo.id))
-                  }
-                />
-              ))}
+            <div className="relative mb-3">
+              <div className="flex gap-4 justify-center relative">
+                {hijos.map((hijo, index) => (
+                  <div key={hijo.id} className="relative">
+                    <Nodo
+                      textoInicial={hijo.texto}
+                      tipo={tipo}
+                      onEliminar={() =>
+                        setHijos(hijos.filter((h) => h.id !== hijo.id))
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
+          {/* Botón para agregar sub-efectos */}
           <div className="mb-2">
             <button
               onClick={agregarHijo}
-              className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs transition-colors duration-200"
             >
               + Sub-efecto
             </button>
@@ -45,8 +50,8 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
         </>
       )}
 
-      {/* Nodo actual */}
-      <div className="relative border border-gray-600 px-4 py-2 rounded-lg bg-white shadow-md">
+      {/* Nodo actual - SIEMPRE en la misma posición relativa */}
+      <div className="relative border-2 border-gray-600 px-4 py-3 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow duration-200">
         <input
           type="text"
           value={texto}
@@ -60,13 +65,13 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
             }
           }}
           onChange={(e) => setTexto(e.target.value)}
-          className="text-center outline-none w-full"
+          className="text-center outline-none w-full font-medium"
         />
 
         {/* Botón eliminar */}
         <button
           onClick={onEliminar}
-          className="hidden group-hover:block absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs"
+          className="hidden group-hover:block absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 text-sm transition-colors duration-200 shadow-md"
         >
           ×
         </button>
@@ -75,27 +80,32 @@ const Nodo = ({ textoInicial, tipo, onEliminar }) => {
       {/* Causas → abajo */}
       {tipo === "causa" && (
         <>
+          {/* Botón para agregar sub-causas */}
           <div className="mt-2">
             <button
               onClick={agregarHijo}
-              className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+              className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs transition-colors duration-200"
             >
               + Sub-causa
             </button>
           </div>
 
+          {/* Sub-causas renderizadas abajo */}
           {hijos.length > 0 && (
-            <div className="flex gap-4 mt-2">
-              {hijos.map((hijo) => (
-                <Nodo
-                  key={hijo.id}
-                  textoInicial={hijo.texto}
-                  tipo={tipo}
-                  onEliminar={() =>
-                    setHijos(hijos.filter((h) => h.id !== hijo.id))
-                  }
-                />
-              ))}
+            <div className="relative mt-3">
+              <div className="flex gap-4 justify-center relative">
+                {hijos.map((hijo, index) => (
+                  <div key={hijo.id} className="relative">
+                    <Nodo
+                      textoInicial={hijo.texto}
+                      tipo={tipo}
+                      onEliminar={() =>
+                        setHijos(hijos.filter((h) => h.id !== hijo.id))
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </>
@@ -122,7 +132,7 @@ const ArbolView25 = () => {
       <h2 className="text-xl font-bold mb-4">Árbol de Problemas</h2>
 
       {/* Efectos */}
-      <div className="flex gap-4 mb-4">
+      <div className="flex gap-4 mb-4 items-end">
         {efectos.map((efecto) => (
           <Nodo
             key={efecto.id}
@@ -164,7 +174,7 @@ const ArbolView25 = () => {
       >
         + Causa
       </button>
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-start">
         {causas.map((causa) => (
           <Nodo
             key={causa.id}
