@@ -7,7 +7,7 @@ const Sidebar = ({ setActiveView }) => {
         <li><button onClick={() => setActiveView("diagnosticosActuales")}>📋 Diagnósticos Actuales</button></li>
         <li><button onClick={() => setActiveView("diagnosticosPrevios")}>📁 Diagnósticos Previos</button></li>
         <li><button onClick={() => setActiveView("colaboradoresActivos")}>👥 Colaboradores Activos</button></li>
-        <li><button onClick={() => setActiveView("crearColaborador")}>🧑‍💼 Crear Colaborador</button></li>
+        <li><button onClick={() => setActiveView("crearColaborador")}>🧑‍💼 Crear Colaborador - Ojo Crear Rol</button></li>
       </ul>
     </div>
   );
