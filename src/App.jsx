@@ -12,6 +12,12 @@ import View7 from "./pages/View7";
 import View18 from "./pages/View18";
 import Entrevista from "./viewsInformation/Entrevista";
 import ArbolView25 from "./viewsAnalysis/ArbolView25";
+import ArbolDiagrama from "./viewsAnalysis/ArbolDiagrama";
+import ArbolDiagramaSimple from "./viewsAnalysis/ArbolDiagramaSimple";
+import ArbolTest from "./viewsAnalysis/ArbolTest";
+import ArbolNuevo from "./viewsAnalysis/ArbolNuevo";
+import ArbolBasico from "./viewsAnalysis/ArbolBasico";
+import ArbolDiagramaFixed from "./viewsAnalysis/ArbolDiagramaFixed";
 
 const App = () => {
   return (
@@ -29,6 +35,12 @@ const App = () => {
         <Route path="/view18" element={<Layout><View18 /></Layout>} />
         <Route path="/entrevista" element={<Layout><Entrevista /></Layout>} />
         <Route path="/arbol" element={<Layout><ArbolView25 /></Layout>} />
+        <Route path="/arbol-diagrama" element={<Layout><ArbolDiagrama /></Layout>} />
+        <Route path="/arbol-simple" element={<Layout><ArbolDiagramaSimple /></Layout>} />
+        <Route path="/arbol-test" element={<ArbolTest />} />
+        <Route path="/arbol-nuevo" element={<Layout><ArbolNuevo /></Layout>} />
+        <Route path="/arbol-basico" element={<ArbolBasico />} />
+        <Route path="/arbol-fixed" element={<Layout><ArbolDiagramaFixed /></Layout>} />
       </Routes>
     </Router>
   );
