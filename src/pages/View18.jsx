@@ -33,7 +33,7 @@ const View18 = () => {
 
     // Navegar solo si está desbloqueada
     if (technique === "Árbol de Problemas") {
-      navigate("/arbol");
+      navigate("/arbolDiagramaFixed");
     }
   };
 
